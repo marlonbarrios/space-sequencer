@@ -46,20 +46,6 @@ function draw() {
 
     var posY = tileHeight * gridY;
 
-    // check if the mouse is over the current tile
-    if (mouseX > posX && mouseX < posX + tileWidth && mouseY > posY && mouseY < posY + tileHeight) {
-      // calculate the time corresponding to the current tile
-      var currentTime = map(currentImage, 0, imageCount, 0, movie.duration());
-
-      // play the video from the calculated time
-      movie.time(currentTime);
-      if (movie.elt.paused) {
-        movie.play();
-      }
-    } else {
-      // pause the video if the mouse is not over the tile
-      movie.pause();
-    }
 
     // draw video
     image(movie, posX, posY, tileWidth, tileHeight);
@@ -87,10 +73,10 @@ function draw() {
     }
 
     // update grid position
-    gridX++;
-    if (gridX >= tileCountX) {
-      gridX = 0;
-      gridY++;
+    gridY++;
+    if (gridY >= tileCountY) {
+      gridY = 0;
+      gridX++;
     }
   }
 }
